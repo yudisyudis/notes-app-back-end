@@ -1,0 +1,67 @@
+Dummy project dalam rangka pembelajaran pembuatan aplikasi back end sederhana dengan bahasa JavaScript menggunakan stack NodeJS dan framework Hapi
+
+Kriteria Web:
+
+	1. Dapat menyimpan data dalam bentuk JSON
+
+	   route /notes dengan method POST digunakan untuk menyimpan data
+
+	   title, tags, body diambil dari request client
+	   id, createdat, dan updatedat diolah server
+	   
+	   response status code 201 ketika berhasil
+	   response staatus code 500 ketika gagal
+
+	2. web server dapat menampilkan catatan
+	   
+	   route /notes dengan method GET digunakan untuk menampilkan catatan
+
+	   response status code 200 jika berhasil
+
+	   jika tidak ada catatan maka array kosong
+
+	3. menampilkan catatan spesifik
+
+	   route /notes/{id} dengan method GET menampilkan catatan spesifik id
+	   response status 200 jika data tersedia
+
+	   response status 404 jika data tidak tersedia
+
+	4. mengubah catatan
+	   
+	   route /notes/id dengan method PUT dapat melakukan perubahan catatan
+
+	   response 200 jika berhasil
+	   response 404 jika id tidak tersedia
+
+	5. Menghapus catatan
+	   route /notes/{id} dengan method DELETE menghapus catatan
+
+	   response 200 jika berhasil
+	   response 404 jika id tidak tersedia
+
+Langkah pelaksanaan project:
+
+1. Membuat Struktur Project
+	
+	agar susunan file project rapi maka sebaiknya dilakukan penyusunan struktur project yang dibagi berdasarkan fungsinya
+
+	1. server.js => konfigurasi server dengan Hapi
+	2. routes.js => menampung seluruh route juga method dan handler yang digunakan
+	3. handler.js => menampung seluruh fungsi handler yang digunakan di routes
+	4. notes.js => memuat seluruh data dalam bentuk objek
+
+	keempat file tersebut dimasukkan dalam folder src agar terpisah dari folder dan file package lainnya
+
+2. Merancang konfigurasi server
+	1. install hapi: npm install @hapi/hapi
+	2. tentukan port, host dengan bantuan Hapi
+ 	3. jalankan server: npm run start
+
+3. Menjalankan kriteria pertama (menyimpan catatan)
+	1. (routes.js) atur path dan method sesuai ketentuan: /notes dengan method POST, dan siapkan handlernya
+	2. (notes.js) siapkan variable penampung nilai
+	3. (handler.js) atur fungsi handler yang terikat pada routes
+	4. (handler.js) fungsi handler untuk menyimpan data, menerima request dengan method request.payload. Menginisiasi data yang dikelola server
+	5. (routes.js) ubah handler yang telah disediakan menjadi fungsi yang dibuat di handle.js
+	6. terapkan CORS pada server.js 
